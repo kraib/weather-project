@@ -6,33 +6,70 @@ import {
   View,
   TextInput
 } from 'react-native';
-
+import  Forecast  from './Forecast';
 export default class  WeatherProject extends Component {
   constructor(props) {
     super(props);
     this.state = {
       zip: "Braagg",
+      forecast: {
+        main: 'Clouds',
+        description: 'few clouds',
+        temp: 45.7
+      },
     };
   }
   render() {
     return (
-      <View>
-        <Text style={styles.red}>just red</Text>
-        <Text style={styles.bigblue}>just bigblue</Text>
-        <Text style={[styles.bigblue, styles.red]}>bigblue, then red</Text>
-        <Text style={[styles.red, styles.bigblue]}>red, then bigblue</Text>
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          You input {this.state.zip}
+        </Text>
+      <Forecast
+        main={this.state.forecast.main}
+        description={this.state.forecast.description}
+        temp={this.state.forecast.temp}/>
+      <TextInput
+        style={styles.input}
+        returnKeyType='go'
+        onSubmitEditing={this._handleTextChange}/>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  bigblue: {
-    color: 'blue',
-    fontWeight: 'bold',
-    fontSize: 30,
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
-  red: {
-    color: 'red',
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
   },
+  input: {
+    fontSize: 20,
+    borderWidth: 2,
+    height: 40
+  },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#4D4D4D',
+    },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+    },
+  input: {
+    fontSize: 20,
+    borderWidth: 2,
+    height: 40
+  }
 });
+
