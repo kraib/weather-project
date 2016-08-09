@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
 		flex: 2,
 		fontSize: 20,
 		textAlign: 'center',
-		margin: 10,
+		margin: 5,
 		color: '#FFFFFF'
 	},
 	mainText: {
