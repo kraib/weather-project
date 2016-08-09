@@ -19,7 +19,11 @@ export default class WeatherProject extends Component {
     super(props);
     this.state = {
       zip: '',
-      forecast: null
+      forecast: {
+        main: 'Clouds',
+        description: 'few clouds',
+        temp: 45.7
+      }
     };
   }
 
@@ -45,12 +49,12 @@ export default class WeatherProject extends Component {
 
   render() {
     var content = null;
-    if (this.state.forecast !== null) {
+   
       content = <Forecast 
                   main={this.state.forecast.main}
                   description={this.state.forecast.description}
                   temp={this.state.forecast.temp}/>;
-    }
+   
     return (
       <View style={styles.container}>
         <Image source={require('./flowers.png')}
@@ -58,7 +62,8 @@ export default class WeatherProject extends Component {
                style={styles.backdrop}>
           <View style={styles.overlay}>
            <View style={styles.row}>
-             <Text style={styles.mainText}>
+ 
+                 <Text style={styles.mainText}>
                Current weather for 
              </Text>
              <View style={styles.zipContainer}>
@@ -66,6 +71,7 @@ export default class WeatherProject extends Component {
                  style={[styles.zipCode, styles.mainText]}
                  onSubmitEditing={(event) => this._handleTextChange(event)}/>
              </View>
+
            </View>
            {content}
          </View>
@@ -95,16 +101,16 @@ const styles = StyleSheet.create({
   },
   row: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     flexWrap: 'nowrap',
-    alignItems: 'flex-start',
-    padding: 30
+    // alignItems: 'flex-start',
+     padding: 30
   },
   zipContainer: {
     flex: 1,
     borderBottomColor: '#DDDDDD',
     borderBottomWidth: 1,
-    marginLeft: 5,
+    marginLeft: 0,
     marginTop: 3
   },
   zipCode: {
